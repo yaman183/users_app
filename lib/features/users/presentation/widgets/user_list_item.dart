@@ -36,10 +36,7 @@ class UserListItem extends StatelessWidget {
           ),
           child: Row(
             children: [
-              _AvatarWithStatus(
-                imageUrl: user.avatar,
-                isActive: isActive,
-              ),
+              AvatarWithStatus(imageUrl: user.avatar, isActive: isActive),
               const SizedBox(width: 12),
 
               Expanded(
@@ -71,7 +68,6 @@ class UserListItem extends StatelessWidget {
 
               const SizedBox(width: 8),
 
-              
               Icon(
                 Icons.more_horiz,
                 color: Colors.black.withValues(alpha: 0.45),
@@ -84,14 +80,11 @@ class UserListItem extends StatelessWidget {
   }
 }
 
-class _AvatarWithStatus extends StatelessWidget {
+class AvatarWithStatus extends StatelessWidget {
   final String imageUrl;
   final bool isActive;
 
-  const _AvatarWithStatus({
-    required this.imageUrl,
-    required this.isActive,
-  });
+  const AvatarWithStatus({required this.imageUrl, required this.isActive});
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +97,6 @@ class _AvatarWithStatus extends StatelessWidget {
           backgroundColor: Colors.grey.shade200,
         ),
 
-        
         if (isActive)
           Positioned(
             right: -1,

@@ -9,10 +9,10 @@ class UserDetailsScreen extends StatelessWidget {
     required this.user,
   });
 
-  static const _bg = Color(0xFFF5F7FF);
-  static const _primary = Color(0xFF2E6AE6);
+  static const bg = Color(0xFFF5F7FF);
+  static const primary = Color(0xFF2E6AE6);
 
-  String _fakePhone(int id) {
+  String fakePhone(int id) {
     
     final base = 1000000 + (id * 9137);
     final s = base.toString().padLeft(7, '0');
@@ -21,12 +21,12 @@ class UserDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final phone = _fakePhone(user.id);
+    final phone = fakePhone(user.id);
 
     return Scaffold(
-      backgroundColor: _bg,
+      backgroundColor: bg,
       appBar: AppBar(
-        backgroundColor: _bg,
+        backgroundColor: bg,
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
@@ -48,7 +48,7 @@ class UserDetailsScreen extends StatelessWidget {
             children: [
               _AvatarWithHalo(
                 imageUrl: user.avatar,
-                haloColor: _primary,
+                haloColor: primary,
                 size: 124,
               ),
               const SizedBox(height: 14),
@@ -83,7 +83,7 @@ class UserDetailsScreen extends StatelessWidget {
                   children: [
                     _InfoRow(
                       icon: Icons.email_rounded,
-                      iconColor: _primary,
+                      iconColor: primary,
                       text: user.email,
                     ),
                     const Divider(height: 6),
