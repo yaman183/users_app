@@ -1,27 +1,34 @@
 # users_app
 
-A simple Flutter application that displays a list of users and user details using the ReqRes API.
+This project was developed as part of a task to display a users list and user details using Flutter and the ReqRes API.
 
-## Features
-- Fetch users from ReqRes API
-- Users list with pagination
-- Search users by name or email
-- Filter users (All / Active / Inactive)
-- User details screen
-- Loading and error handling
-- Local caching for active status
+## Project Overview
+The main requirements of the task were:
+- Fetch users data from an API
+- Display a users list with search and filter options (All / Active / Inactive)
+- Show a user details screen
+- Handle loading, error, and empty states properly
 
-## Tech Stack
-- Flutter
-- Dio (API requests)
-- Riverpod (state management)
-- Shared Preferences (local storage)
+## Issue We Faced
+During development, we faced an issue while fetching data from the API.
+Some requests were returning a **403 Forbidden** error.
 
-## API
-This project uses the public API:
-https://reqres.in/
+This error usually means that the server is rejecting the request, which can happen when:
+- Required headers are missing
+- The request is not recognized as coming from a valid client
 
-## How to Run
-1. Clone the repository
-```bash
-git clone https://github.com/yaman183/users_app.git
+## How We Solved It
+To solve this issue:
+- We used **Dio** for handling API requests
+- Added proper request headers such as:
+  - `User-Agent`
+  - `Accept`
+  - `Content-Type`
+- Configured request timeouts to handle slow responses
+
+After these changes, the API requests worked correctly and data was fetched without errors.
+
+## Notes
+- Riverpod is used for state management
+- Loading, error, and empty states are handled in the UI
+- User active/inactive status is stored locally to keep the state consistent
